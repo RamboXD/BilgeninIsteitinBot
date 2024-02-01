@@ -61,10 +61,6 @@ Here are some of the commands you can use with BilgeninIsteitinBot:
 - `!result`: Displays poll results.
 - `!help`: Lists all commands.
 
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
 ## Acknowledgements
 
 - OpenWeatherMap API
