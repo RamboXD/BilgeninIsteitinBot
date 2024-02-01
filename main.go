@@ -2,24 +2,25 @@ package main
 
 import (
 	"discord-bot/bot"
-	"log"
+	"discord-bot/commands"
+	db "discord-bot/database"
 	"os"
 )
 
 func main() {
 	// Load environment variables
-	botToken, ok := os.LookupEnv("BOT_TOKEN")
-	if !ok {
-		log.Fatal("Must set Discord token as env variable: BOT_TOKEN")
-	}
-	openWeatherToken, ok := os.LookupEnv("OPENWEATHER_TOKEN")
-	if !ok {
-		log.Fatal("Must set Open Weather token as env variable: OPENWEATHER_TOKEN")
-	}
+	botToken := os.Getenv("BOT_TOKEN")
+	openWeatherToken := os.Getenv("OPENWEATHER_TOKEN")
+	translateToken := os.Getenv("TRANSLATE_TOKEN")
+	mongoDBToken := os.Getenv("MONGO_DB_TOKEN")
+	gptToken := os.Getenv("GPT_TOKEN")
 
 	// Save API keys & start bot
 	bot.BotToken = botToken
-	bot.OpenWeatherToken = openWeatherToken
+	bot.TranslateToken = translateToken
+	commands.OpenWeatherToken = openWeatherToken
+	commands.GPTKey = gptToken
+	db.MongoDBURI = mongoDBToken
 	bot.Run()
 }
 

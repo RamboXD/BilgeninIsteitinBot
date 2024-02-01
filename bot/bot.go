@@ -1,11 +1,12 @@
 package bot
 
 import (
+	"discord-bot/commands"
+	db "discord-bot/database"
 	"fmt"
 	"log"
 	"os"
 	"os/signal"
-	"strings"
 
 	"github.com/bwmarrin/discordgo"
 )
@@ -14,11 +15,17 @@ import (
 var (
 	OpenWeatherToken string
 	BotToken         string
+	TranslateToken	 string
+	MongoDBURI       string
+	GPTKey 			 string
 )
 
 func Run() {
 	// Create new Discord Session
+	db.InitMongoDB()
+
 	discord, err := discordgo.New("Bot " + BotToken)
+	// fmt.Println(discord)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -26,8 +33,14 @@ func Run() {
 	// Add event handler for general messages
 	discord.AddHandler(newMessage)
 
+	go commands.RemindScheduler(discord)
+
+
 	// Open session
-	discord.Open()
+	if err := discord.Open(); err != nil {
+		log.Fatalf("Error opening Discord session: %v", err)
+	}
+
 	defer discord.Close()
 
 	// Run until code is terminated
@@ -36,22 +49,4 @@ func Run() {
 	signal.Notify(c, os.Interrupt)
 	<-c
 
-}
-
-func newMessage(discord *discordgo.Session, message *discordgo.MessageCreate) {
-	// Ignore bot message
-	if message.Author.ID == discord.State.User.ID {
-		return
-	}
-
-	// Respond to messages
-	switch {
-	case strings.Contains(message.Content, "ауа райы"):
-		discord.ChannelMessageSend(message.ChannelID, "Смело брат! Осылай сұра '!weather <city name>'")
-	case strings.Contains(message.Content, "бот"):
-		discord.ChannelMessageSend(message.ChannelID, "Саламалейкум!")
-	case strings.Contains(message.Content, "!weather"):
-		currentWeather := getCurrentWeather(message.Content)
-		discord.ChannelMessageSendComplex(message.ChannelID, currentWeather)
-	}
 }
