@@ -65,6 +65,62 @@ Maximize BilgeninIsteitinBot's potential with these commands:
 
 Leveraging **MongoDB**, BilgeninIsteitinBot stores polls, game outcomes, and reminders efficiently. This setup enables quick data retrieval and manipulation, ensuring that asynchronous tasks like reminders fire off without a hitch and game states persist accurately over time.
 
+## 🚀 Setup Instructions
+
+Bringing `BilgeninIsteitinBot` to life in your Discord server involves a few simple steps. Let's embark on this journey together!
+
+### 🛠 Prerequisites
+
+Before we start, you'll need a few things:
+
+- A **Discord account** and **administrative access** to a server.
+- An **OpenWeatherMap API key** for fetching weather updates.
+- An **OpenAI API key** for engaging GPT-3.5 interactions.
+- **MongoDB** for storing the treasure trove of data like polls and reminders.
+
+### 📦 Installation
+
+#### 1. Clone the Treasure Map
+
+Open your command line and run:
+
+```bash
+git clone https://github.com/yourusername/BilgeninIsteitinBot.git
+cd BilgeninIsteitinBot
+```
+
+This magical incantation will clone the repository to your local machine and navigate you into the project directory.
+
+#### 2. Gather Your Tools
+
+Make sure you have [Go](https://golang.org/dl/) installed on your ship. Then, install the necessary dependencies to ensure your bot is well-equipped.
+
+#### 3. Secrets of the Bot
+
+Navigate to the secret chamber (`.env` file or your environment variables) and declare:
+
+Replace the placeholders with your actual secrets. These are the keys to unlock the full potential of `BilgeninIsteitinBot`.
+
+```bash
+DISCORD_BOT_TOKEN=your_discord_bot_token_here
+OPENWEATHERMAP_API_KEY=your_openweathermap_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here
+MONGODB_URI=your_mongodb_uri_here
+```
+
+### 🏃‍♂️ Embark on the Journey
+
+With your bot fully equipped and ready to explore, it's time to bring it to life.
+
+### 📬 Invite the Bot to Your Server
+
+1. Navigate to the [Discord Developer Portal](https://discord.com/developers/applications).
+2. Find your bot and visit the **OAuth2** page.
+3. In **Scopes**, select `bot`. In **Bot Permissions**, choose the permissions your bot needs.
+4. Use the generated URL to invite your bot to your Discord server.
+
+And that's it! `BilgeninIsteitinBot` is now ready to sail the digital seas of your Discord server, bringing weather updates, translations, reminders, games, and AI-powered conversations to your community.
+
 ## 📜 Acknowledgements
 
 - **OpenWeatherMap API**: For empowering us with weather insights.
