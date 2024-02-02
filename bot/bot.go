@@ -13,11 +13,8 @@ import (
 
 // Store Bot API Tokens:
 var (
-	OpenWeatherToken string
 	BotToken         string
-	TranslateToken	 string
-	MongoDBURI       string
-	GPTKey 			 string
+	TranslateToken         string
 )
 
 func Run() {

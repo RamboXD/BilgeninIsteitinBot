@@ -21,6 +21,7 @@ func main() {
 	commands.OpenWeatherToken = openWeatherToken
 	commands.GPTKey = gptToken
 	db.MongoDBURI = mongoDBToken
+
 	bot.Run()
 }
 
