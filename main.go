@@ -4,10 +4,19 @@ import (
 	"discord-bot/bot"
 	"discord-bot/commands"
 	db "discord-bot/database"
+	"log"
 	"os"
+
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	// Load the .env file
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatalf("Error loading .env file: %v", err)
+	}
+
 	// Load environment variables
 	botToken := os.Getenv("BOT_TOKEN")
 	openWeatherToken := os.Getenv("OPENWEATHER_TOKEN")
@@ -24,4 +33,3 @@ func main() {
 
 	bot.Run()
 }
-
